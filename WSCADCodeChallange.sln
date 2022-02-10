@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSCADCodeChallange", "WSCADCodeChallange\WSCADCodeChallange.csproj", "{760F6B2C-0F4C-43B3-B46F-D15B89CBBEB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{760F6B2C-0F4C-43B3-B46F-D15B89CBBEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760F6B2C-0F4C-43B3-B46F-D15B89CBBEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760F6B2C-0F4C-43B3-B46F-D15B89CBBEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760F6B2C-0F4C-43B3-B46F-D15B89CBBEB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0FA8298-A2F9-47C3-944B-515EE29D1BA6}
+	EndGlobalSection
+EndGlobal
