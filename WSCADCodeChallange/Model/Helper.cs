@@ -11,6 +11,7 @@ namespace WSCADCodeChallange.Model
 {
     internal class Helper
     {
+
         public static SolidColorBrush ConvertArgbToColor(string Argb)
         {
             string[] ArgbArray = Regex.Split(Argb, "; ",

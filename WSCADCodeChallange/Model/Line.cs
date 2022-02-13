@@ -12,7 +12,7 @@ using WSCADCodeChallange.Model.Factory;
 
 namespace WSCADCodeChallange.Model
 {
-    public class Line : IShape
+    internal class Line : IShape
     {
         public string Type { get; set; }
         public SolidColorBrush SColor { get; set; }
