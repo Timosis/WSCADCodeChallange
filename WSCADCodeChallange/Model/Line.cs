@@ -15,48 +15,47 @@ namespace WSCADCodeChallange.Model
     public class Line : IShape
     {
         public string Type { get; set; }
-        public SolidColorBrush Color { get; set; }
+        public SolidColorBrush SColor { get; set; }
         private double X1 { get; set; }
         private double Y1 { get; set; }
         private double X2 { get; set; }
         private double Y2 { get; set; }
-
+     
         public Line(dynamic shapeObject)
         {
             this.Type = shapeObject.type;
-            this.Color = Helper.ConvertArgbToColor(Convert.ToString(shapeObject.color));
+            this.SColor = Helper.ConvertArgbToColor(Convert.ToString(shapeObject.color));
 
             // property a seperated with ;
-            string[] X1Y1Array = Regex.Split(Convert.ToString(shapeObject.a), "; ",
+            string[] X1Y1Points = Regex.Split(Convert.ToString(shapeObject.a), "; ",
                     RegexOptions.IgnoreCase,
                     TimeSpan.FromMilliseconds(500));
 
             // property b seperated with ;
-            string[] X2Y2Array = Regex.Split(Convert.ToString(shapeObject.b), "; ",
+            string[] X2Y2Points = Regex.Split(Convert.ToString(shapeObject.b), "; ",
                     RegexOptions.IgnoreCase,
                     TimeSpan.FromMilliseconds(500));
 
-            this.X1 = Convert.ToDouble(X1Y1Array[0]);
-            this.Y1 = Convert.ToDouble(X1Y1Array[1]);
+            this.X1 = Convert.ToDouble(X1Y1Points[0]);
+            this.Y1 = Convert.ToDouble(X1Y1Points[1]);
 
-            this.X2 = Convert.ToDouble(X2Y2Array[0]);
-            this.Y2 = Convert.ToDouble(X2Y2Array[1]);
+            this.X2 = Convert.ToDouble(X2Y2Points[0]);
+            this.Y2 = Convert.ToDouble(X2Y2Points[1]);
         }
 
         public void Draw()
-        {
-            LineGeometry line = new LineGeometry();
-            line.StartPoint = new Point(this.X1, this.Y1);
-            line.EndPoint = new Point(this.X2, this.Y2);
+        {            
+            System.Windows.Shapes.Line myline = new System.Windows.Shapes.Line();
+            myline.X1 = X1;
+            myline.Y1 = Y1;
 
-            Path path = new Path();
-            path.Stroke = this.Color;
+            myline.X2 = X2;
+            myline.Y2 = Y2;
 
-            path.Data = line;
+            myline.Stroke = SColor;
+            myline.StrokeThickness = 1;
 
-            Helper.DrawToMainWindow(path);
-
-            return;
+            Helper.DrawIntoCanvas(myline);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -30,17 +31,13 @@ namespace WSCADCodeChallange.Model
             this.SColor = Helper.ConvertArgbToColor(Convert.ToString(c_object.color));
             this.Filled = c_object.filled;
 
-            // getting triangle's A edge coordinates with separeting ;
-            string[] a_coordinates = Regex.Split(Convert.ToString(c_object.a), "; ", RegexOptions.IgnoreCase);
-
-            // getting triangle's B edge coordinates with separeting ;
-            string[] b_Coordinates = Regex.Split(Convert.ToString(c_object.b), "; ", RegexOptions.IgnoreCase);
-
-            // getting triangle's C edge coordinates with separeting ;
+            // following variables are splitted for getting triangle's A,B,C egde coordinates with separeting ;
+            string[] a_coordinates = Regex.Split(Convert.ToString(c_object.a), "; ", RegexOptions.IgnoreCase);            
+            string[] b_Coordinates = Regex.Split(Convert.ToString(c_object.b), "; ", RegexOptions.IgnoreCase);            
             string[] c_coordinates = Regex.Split(Convert.ToString(c_object.c), "; ", RegexOptions.IgnoreCase);
 
 
-
+            // following lines shows that getting triangle edges' points and assign these to related variable
             this.AX = Convert.ToDouble(a_coordinates[0]);
             this.AY = Convert.ToDouble(a_coordinates[1]);
 
@@ -52,32 +49,23 @@ namespace WSCADCodeChallange.Model
         }
 
 
+        /// <summary>
+        /// The method aims to drawing polygon by using points
+        /// Note: Triangle also is a polygon
+        /// </summary>
         public void Draw()
         {
-            LineGeometry line1 = new LineGeometry();
-            line1.StartPoint = new Point(this.AX, this.AY);
-            line1.EndPoint = new Point(this.BX, this.BY);
+            var polygon = new Polygon();
+            polygon.Fill = SColor;
+            polygon.Stroke = new SolidColorBrush(Colors.Black);
+            polygon.StrokeThickness = 1;
+            var polygonPoints = new PointCollection();
+            polygonPoints.Add(new Point(this.AX, this.AY));
+            polygonPoints.Add(new Point(this.BX, this.BY));
+            polygonPoints.Add(new Point(this.CX, this.CY));
+            polygon.Points = polygonPoints;
 
-            LineGeometry line2 = new LineGeometry();
-            line2.StartPoint = new Point(this.BX, this.BY);
-            line2.EndPoint = new Point(this.CX, this.CY);
-
-            LineGeometry line3 = new LineGeometry();
-            line3.StartPoint = new Point(this.CX, this.CY);
-            line3.EndPoint = new Point(this.AX, this.AY);
-
-            GeometryGroup geometryGroup = new GeometryGroup();
-            geometryGroup.Children.Add(line1);
-            geometryGroup.Children.Add(line2);
-            geometryGroup.Children.Add(line3);
-
-            Path path = new Path();
-            path.Stroke = this.SColor;
-            path.Data = geometryGroup;
-
-            Helper.DrawToMainWindow(path);
-
-            return;
+            Helper.DrawIntoCanvas(polygon);
         }
     }
 }

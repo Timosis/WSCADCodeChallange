@@ -16,9 +16,9 @@ namespace WSCADCodeChallange.Business.Shape
             ShapeData = _shape;
         }
 
-        public void DrawPoints()
+        public void DrawShape()
         {
-            DrawBusiness.DrawShapes(ShapeData);
+            DrawBusiness.DrawShape(ShapeData);
         }
     }
 }

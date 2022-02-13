@@ -9,6 +9,6 @@ namespace WSCADCodeChallange.Business.Shape
 {
     public interface IDrawingShapeBusiness
     {
-        void DrawShapes(IShape shapeData);
+        void DrawShape(IShape shapeData);
     }
 }

@@ -53,13 +53,14 @@ namespace WSCADCodeChallange.Model
             ellipse.Center = new Point(this.CenterX, this.CenterY);
             ellipse.RadiusX = this.Radius;
             ellipse.RadiusY = this.Radius;
-
+           
             Path path = new Path();
             path.Stroke = this.SColor;
+            path.StrokeThickness = 1;
+
             path.Fill = this.Filled == true ? this.SColor : new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             path.Data = ellipse;
             Helper.DrawToMainWindow(path);
-            return;
         }
     }
 }

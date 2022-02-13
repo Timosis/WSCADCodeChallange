@@ -44,9 +44,10 @@ namespace WSCADCodeChallange
             {
                 IShape concreteShape = shapeFactory.GetShape(shape);
 
+                //Draws with the concrete shape object to the mainwindow
                 DrawingShape drawObject = new DrawingShape(concreteShape);
                 drawObject.DrawBusiness = new DrawingShapePoints();
-                drawObject.DrawPoints();
+                drawObject.DrawShape();
             }
         }
     }

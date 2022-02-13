@@ -9,7 +9,7 @@ namespace WSCADCodeChallange.Business.Shape
 {
     public class DrawingShapePoints : IDrawingShapeBusiness
     {
-        public void DrawShapes(IShape shape)
+        public void DrawShape(IShape shape)
         {
             shape.Draw();
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace WSCADCodeChallange.Model
 {
@@ -19,21 +20,6 @@ namespace WSCADCodeChallange.Model
         }
 
         /// <summary>
-        /// Convert hexadecimal code to known color if it is exists
-        /// </summary>
-        /// <param name="color"></param>
-        /// <returns></returns>
-        public static string ConvertToKnownColorName(string color)
-        {
-            System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml(color.ToString());
-            if (col.IsKnownColor == true)
-                return col.ToKnownColor().ToString();
-            else
-                return color.ToString();
-
-        }
-
-        /// <summary>
         /// Draws the path object to the mainwindow
         /// </summary>
         /// <param name="path"></param>
@@ -41,5 +27,42 @@ namespace WSCADCodeChallange.Model
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).Canvas.Children.Add(path);
         }
+
+        /// <summary>
+        /// Draws the path object to the mainwindow
+        /// </summary>
+        /// <param name="path"></param>
+        public static void DrawIntoCanvas(System.Windows.Shapes.Polygon polygon)
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).Canvas.Children.Add(polygon);
+        }
+
+        /// <summary>
+        /// Draws the ellipse object to the mainwindow
+        /// </summary>
+        /// <param name="ellipse"></param>
+        public static void DrawIntoCanvas(System.Windows.Shapes.Ellipse ellipse)
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).Canvas.Children.Add(ellipse);
+        }
+
+        /// <summary>
+        /// Draws the line object to the mainwindow
+        /// </summary>
+        /// <param name="line"></param>
+        public static void DrawIntoCanvas(System.Windows.Shapes.Line line)
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).Canvas.Children.Add(line);
+        }
+
+        /// <summary>
+        /// Draws the rectangle object to the mainwindow
+        /// </summary>
+        /// <param name="path"></param>
+        public static void DrawIntoCanvas(System.Windows.Shapes.Rectangle rectangle)
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).Canvas.Children.Add(rectangle);
+        }
+
     }
 }

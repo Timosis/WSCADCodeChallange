@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WSCADCodeChallange"
         mc:Ignorable="d"
-        Background="Black"
+        Background="DarkCyan"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Name="Test">
+
         <Button x:Name="button" Content="Draw Shapes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <Border BorderThickness="2" BorderBrush="Black" Margin="10,35,10,10">
-            <Canvas x:Name="Canvas" VerticalAlignment="Center" HorizontalAlignment="Center" >
-            </Canvas>
-        </Border>
+
+        <Viewbox Stretch="Uniform">
+            <Border BorderThickness="2"  Margin="10,35,10,10">
+                <Canvas x:Name="Canvas" HorizontalAlignment="Center" VerticalAlignment="Center" Width="0" Height="0"
+          RenderTransform="1 0 0 -1 0 0">
+                </Canvas>
+            </Border>
+
+        </Viewbox>
     </Grid>
 </Window>
